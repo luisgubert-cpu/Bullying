@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -20,6 +20,10 @@
             --white: #FFFFFF;
             --gray: #95A5A6;
             --dark-gray: #7F8C8D;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -122,11 +126,16 @@
             color: var(--accent);
         }
 
-        /* Sections */
-        section {
-            padding: 4rem 2rem;
+        /* Container principal */
+        .container {
             max-width: 1000px;
             margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
         }
 
         .section-title {
@@ -144,6 +153,16 @@
             height: 3px;
             background: var(--accent);
             margin: 1rem auto 0;
+        }
+
+        .section-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Definition Section */
@@ -210,8 +229,8 @@
         .stats-section {
             background: var(--secondary);
             color: var(--white);
-            padding: 4rem 2rem;
-            margin: 0 -2rem;
+            padding: 4rem 0;
+            width: 100%;
         }
 
         .stats-grid {
@@ -220,6 +239,7 @@
             gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .stat-item {
@@ -270,6 +290,7 @@
             align-items: center;
             justify-content: center;
             background: var(--light);
+            flex-shrink: 0;
         }
 
         .location-content h3 {
@@ -292,6 +313,13 @@
             font-size: 0.75rem;
             font-weight: 600;
             margin-top: 0.5rem;
+        }
+
+        /* Como Section - Fundo branco full width */
+        .como-section {
+            background: var(--white);
+            padding: 4rem 0;
+            width: 100%;
         }
 
         /* Prevention Section */
@@ -349,6 +377,7 @@
             justify-content: center;
             font-weight: 700;
             font-size: 0.8rem;
+            flex-shrink: 0;
         }
 
         .prevention-item p {
@@ -434,6 +463,7 @@
             
             .location-card {
                 flex-direction: column;
+                align-items: flex-start;
             }
             
             .prevention-timeline {
@@ -442,6 +472,14 @@
             
             .prevention-item::before {
                 left: -1.9rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .stats-grid {
+                padding: 0 1rem;
             }
         }
     </style>
@@ -467,46 +505,48 @@
     </header>
 
     <section id="definicao">
-        <h2 class="section-title">O que é Bullying?</h2>
-        <div class="definition">
-            <p class="definition-text">
-                <span class="highlight">Bullying</span> é um comportamento agressivo e repetitivo que envolve um <span class="highlight">desequilíbrio de poder</span> real ou percebido. Diferente de uma simples briga ou conflito isolado, o bullying é caracterizado pela <span class="highlight">intenção deliberada de causar dano</span>, seja físico, verbal, social ou psicológico, e ocorre repetidamente ao longo do tempo.
-                <br><br>
-                É importante entender que bullying não é "brincadeira", não é "coisa de criança" e não é algo que a vítima deve "aprender a lidar sozinha". É uma forma de <span class="highlight">violência</span> que pode deixar sequelas emocionais profundas e duradouras.
-            </p>
-        </div>
+        <div class="container">
+            <h2 class="section-title">O que é Bullying?</h2>
+            <div class="definition">
+                <p class="definition-text">
+                    <span class="highlight">Bullying</span> é um comportamento agressivo e repetitivo que envolve um <span class="highlight">desequilíbrio de poder</span> real ou percebido. Diferente de uma simples briga ou conflito isolado, o bullying é caracterizado pela <span class="highlight">intenção deliberada de causar dano</span>, seja físico, verbal, social ou psicológico, e ocorre repetidamente ao longo do tempo.
+                    <br><br>
+                    É importante entender que bullying não é "brincadeira", não é "coisa de criança" e não é algo que a vítima deve "aprender a lidar sozinha". É uma forma de <span class="highlight">violência</span> que pode deixar sequelas emocionais profundas e duradouras.
+                </p>
+            </div>
 
-        <h3 style="text-align: center; margin: 3rem 0 1.5rem; font-size: 1.5rem; color: var(--primary);">Tipos de Bullying</h3>
-        <div class="types-grid">
-            <div class="type-card">
-                <div class="type-icon">👊</div>
-                <h3>Físico</h3>
-                <p>Bater, empurrar, chutar, puxar cabelos, estragar pertences ou qualquer forma de agressão corporal.</p>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">💬</div>
-                <h3>Verbal</h3>
-                <p>Xingamentos, apelidos pejorativos, insultos, ameaças, humilhações públicas e comentários depreciativos.</p>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">😢</div>
-                <h3>Psicológico/Relacional</h3>
-                <p>Exclusão social, fofocas, manipulação, isolar a vítima do grupo e espalhar rumores mentirosos.</p>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">📱</div>
-                <h3>Cyberbullying</h3>
-                <p>Agressões através da internet: mensagens de ódio, exposição de fotos, perfis falsos e ameaças online.</p>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">👀</div>
-                <h3>Moral</h3>
-                <p>Perseguição, difamação, calúnia, injúria e exposição da imagem da vítima de forma negativa.</p>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">🎨</div>
-                <h3>Material</h3>
-                <p>Dano ou roubo de pertences pessoais, materiais escolares, extorsão de dinheiro ou objetos.</p>
+            <h3 style="text-align: center; margin: 3rem 0 1.5rem; font-size: 1.5rem; color: var(--primary);">Tipos de Bullying</h3>
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">👊</div>
+                    <h3>Físico</h3>
+                    <p>Bater, empurrar, chutar, puxar cabelos, estragar pertences ou qualquer forma de agressão corporal.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">💬</div>
+                    <h3>Verbal</h3>
+                    <p>Xingamentos, apelidos pejorativos, insultos, ameaças, humilhações públicas e comentários depreciativos.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">😢</div>
+                    <h3>Psicológico/Relacional</h3>
+                    <p>Exclusão social, fofocas, manipulação, isolar a vítima do grupo e espalhar rumores mentirosos.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">📱</div>
+                    <h3>Cyberbullying</h3>
+                    <p>Agressões através da internet: mensagens de ódio, exposição de fotos, perfis falsos e ameaças online.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">👀</div>
+                    <h3>Moral</h3>
+                    <p>Perseguição, difamação, calúnia, injúria e exposição da imagem da vítima de forma negativa.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🎨</div>
+                    <h3>Material</h3>
+                    <p>Dano ou roubo de pertences pessoais, materiais escolares, extorsão de dinheiro ou objetos.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -533,70 +573,72 @@
     </div>
 
     <section id="onde">
-        <h2 class="section-title">Onde Acontece o Bullying?</h2>
-        <p style="text-align: center; font-size: 1.1rem; color: var(--dark-gray); margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-            O bullying pode ocorrer em qualquer ambiente onde haja interação humana, mas alguns locais são mais vulneráveis devido à dinâmica de poder e supervisão.
-        </p>
-        
-        <div class="locations">
-            <div class="location-card">
-                <div class="location-icon">🏫</div>
-                <div class="location-content">
-                    <h3>Escolas e Universidades</h3>
-                    <p>O local onde mais acontece bullying. Corredores, banheiros, pátios, refeitórios, salas de aula e transporte escolar. A escola é o ambiente onde crianças e adolescentes passam a maior parte do tempo fora de casa.</p>
-                    <span class="location-tag">MAIS COMUM</span>
-                </div>
-            </div>
+        <div class="container">
+            <h2 class="section-title">Onde Acontece o Bullying?</h2>
+            <p class="section-intro">
+                O bullying pode ocorrer em qualquer ambiente onde haja interação humana, mas alguns locais são mais vulneráveis devido à dinâmica de poder e supervisão.
+            </p>
             
-            <div class="location-card">
-                <div class="location-icon">💼</div>
-                <div class="location-content">
-                    <h3>Ambiente de Trabalho (Mobbing)</h3>
-                    <p>Bullying no trabalho envolve assédio moral, sabotagem de carreira, humilhações em reuniões, sobrecarga de trabalho deliberada e exclusão de atividades sociais corporativas.</p>
-                    <span class="location-tag">CRESCENTE</span>
+            <div class="locations">
+                <div class="location-card">
+                    <div class="location-icon">🏫</div>
+                    <div class="location-content">
+                        <h3>Escolas e Universidades</h3>
+                        <p>O local onde mais acontece bullying. Corredores, banheiros, pátios, refeitórios, salas de aula e transporte escolar. A escola é o ambiente onde crianças e adolescentes passam a maior parte do tempo fora de casa.</p>
+                        <span class="location-tag">MAIS COMUM</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="location-card">
-                <div class="location-icon">🏠</div>
-                <div class="location-content">
-                    <h3>Vizinhança e Comunidade</h3>
-                    <p>Parques, praças, centros comerciais, clubes e espaços de lazer. O bullying de vizinhança pode envolver intimidação e exclusão de atividades comunitárias.</p>
+                
+                <div class="location-card">
+                    <div class="location-icon">💼</div>
+                    <div class="location-content">
+                        <h3>Ambiente de Trabalho (Mobbing)</h3>
+                        <p>Bullying no trabalho envolve assédio moral, sabotagem de carreira, humilhações em reuniões, sobrecarga de trabalho deliberada e exclusão de atividades sociais corporativas.</p>
+                        <span class="location-tag">CRESCENTE</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="location-card">
-                <div class="location-icon">🌐</div>
-                <div class="location-content">
-                    <h3>Internet e Redes Sociais</h3>
-                    <p>O cyberbullying acontece 24 horas por dia através de WhatsApp, Instagram, TikTok, Facebook e jogos online. Não tem limites geográficos.</p>
-                    <span class="location-tag">ALTA INCIDÊNCIA</span>
+                
+                <div class="location-card">
+                    <div class="location-icon">🏠</div>
+                    <div class="location-content">
+                        <h3>Vizinhança e Comunidade</h3>
+                        <p>Parques, praças, centros comerciais, clubes e espaços de lazer. O bullying de vizinhança pode envolver intimidação e exclusão de atividades comunitárias.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="location-card">
-                <div class="location-icon">⚽</div>
-                <div class="location-content">
-                    <h3>Esportes e Atividades Extracurriculares</h3>
-                    <p>Times esportivos, grupos de dança, teatro, música. Pode ocorrer entre colegas de equipe ou através de treinadores autoritários.</p>
+                
+                <div class="location-card">
+                    <div class="location-icon">🌐</div>
+                    <div class="location-content">
+                        <h3>Internet e Redes Sociais</h3>
+                        <p>O cyberbullying acontece 24 horas por dia através de WhatsApp, Instagram, TikTok, Facebook e jogos online. Não tem limites geográficos.</p>
+                        <span class="location-tag">ALTA INCIDÊNCIA</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="location-card">
-                <div class="location-icon">🏥</div>
-                <div class="location-content">
-                    <h3>Instituições de Saúde e Abrigos</h3>
-                    <p>Hospitais, clínicas, asilos e abrigos. Pessoas em situação de vulnerabilidade física ou emocional são frequentemente alvos.</p>
+                
+                <div class="location-card">
+                    <div class="location-icon">⚽</div>
+                    <div class="location-content">
+                        <h3>Esportes e Atividades Extracurriculares</h3>
+                        <p>Times esportivos, grupos de dança, teatro, música. Pode ocorrer entre colegas de equipe ou através de treinadores autoritários.</p>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-icon">🏥</div>
+                    <div class="location-content">
+                        <h3>Instituições de Saúde e Abrigos</h3>
+                        <p>Hospitais, clínicas, asilos e abrigos. Pessoas em situação de vulnerabilidade física ou emocional são frequentemente alvos.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="como" style="background: var(--white); margin: 0 -2rem; padding: 4rem 2rem;">
-        <div style="max-width: 1000px; margin: 0 auto;">
+    <div class="como-section" id="como">
+        <div class="container">
             <h2 class="section-title">Como e De Que Jeito Acontece?</h2>
             
-            <div class="types-grid" style="margin-top: 2rem;">
+            <div class="types-grid">
                 <div class="type-card">
                     <h3>🔄 Agressão Repetitiva</h3>
                     <p>O bullying não é um evento isolado. Acontece <strong>repetidamente</strong> ao longo do tempo, criando um padrão de intimidação sistemática.</p>
@@ -628,62 +670,64 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <section id="prevenir">
-        <h2 class="section-title">Como Acabar ou Amenizar o Bullying?</h2>
-        <p style="text-align: center; font-size: 1.1rem; color: var(--dark-gray); margin-bottom: 2rem;">
-            A prevenção do bullying requer ação de toda a comunidade. Aqui estão estratégias eficazes baseadas em evidências:
-        </p>
+        <div class="container">
+            <h2 class="section-title">Como Acabar ou Amenizar o Bullying?</h2>
+            <p class="section-intro">
+                A prevenção do bullying requer ação de toda a comunidade. Aqui estão estratégias eficazes baseadas em evidências:
+            </p>
 
-        <div class="prevention-timeline">
-            <div class="prevention-item">
-                <h3><span class="prevention-number">1</span> Educação e Conscientização</h3>
-                <p>Programas educativos sobre empatia, respeito à diversidade, inteligência emocional e consequências do bullying. Quanto mais as pessoas entendem o impacto real, menos provável é que o pratiquem.</p>
+            <div class="prevention-timeline">
+                <div class="prevention-item">
+                    <h3><span class="prevention-number">1</span> Educação e Conscientização</h3>
+                    <p>Programas educativos sobre empatia, respeito à diversidade, inteligência emocional e consequências do bullying. Quanto mais as pessoas entendem o impacto real, menos provável é que o pratiquem.</p>
+                </div>
+                
+                <div class="prevention-item">
+                    <h3><span class="prevention-number">2</span> Políticas Claras e Consistentes</h3>
+                    <p>Estabelecer regras explícitas contra bullying com consequências definidas. Protocolos claros de denúncia, investigação e intervenção aplicados consistentemente.</p>
+                </div>
+                
+                <div class="prevention-item">
+                    <h3><span class="prevention-number">3</span> Supervisão Adequada</h3>
+                    <p>Aumentar a vigilância em locais de risco (corredores, banheiros, pátios, online). Muitos casos ocorrem em "pontos cegos" onde adultos não estão presentes.</p>
+                </div>
+                
+                <div class="prevention-item">
+                    <h3><span class="prevention-number">4</span> Empoderamento das Testemunhas</h3>
+                    <p>80% dos casos têm espectadores. Ensinar bystanders a intervir de forma segura (pedir ajuda a adultos, apoiar a vítima, não reforçar o agressor).</p>
+                </div>
+                
+                <div class="prevention-item">
+                    <h3><span class="prevention-number">5</span> Apoio às Vítimas</h3>
+                    <p>Oferecer suporte psicológico, canais de denúncia anônimos e grupos de apoio. Vítimas precisam saber que não estão sozinhas e que a culpa não é delas.</p>
+                </div>
+                
+                <div class="prevention-item">
+                    <h3><span class="prevention-number">6</span> Intervenção nos Agressores</h3>
+                    <p>Não basta punir; é necessário entender as causas do comportamento agressivo. Terapia, mediação de conflitos e programas de habilidades sociais.</p>
+                </div>
+                
+                <div class="prevention-item">
+                    <h3><span class="prevention-number">7</span> Engajamento Familiar</h3>
+                    <p>Envolver pais e responsáveis na prevenção. Famílias precisam monitorar o comportamento dos filhos e ensinar empatia desde cedo.</p>
+                </div>
+                
+                <div class="prevention-item">
+                    <h3><span class="prevention-number">8</span> Cultura de Respeito</h3>
+                    <p>Criar ambientes que valorizem a diversidade e inclusão. Celebrar diferenças, promover atividades colaborativas e reconhecer comportamentos positivos.</p>
+                </div>
             </div>
-            
-            <div class="prevention-item">
-                <h3><span class="prevention-number">2</span> Políticas Claras e Consistentes</h3>
-                <p>Estabelecer regras explícitas contra bullying com consequências definidas. Protocolos claros de denúncia, investigação e intervenção aplicados consistentemente.</p>
-            </div>
-            
-            <div class="prevention-item">
-                <h3><span class="prevention-number">3</span> Supervisão Adequada</h3>
-                <p>Aumentar a vigilância em locais de risco (corredores, banheiros, pátios, online). Muitos casos ocorrem em "pontos cegos" onde adultos não estão presentes.</p>
-            </div>
-            
-            <div class="prevention-item">
-                <h3><span class="prevention-number">4</span> Empoderamento das Testemunhas</h3>
-                <p>80% dos casos têm espectadores. Ensinar bystanders a intervir de forma segura (pedir ajuda a adultos, apoiar a vítima, não reforçar o agressor).</p>
-            </div>
-            
-            <div class="prevention-item">
-                <h3><span class="prevention-number">5</span> Apoio às Vítimas</h3>
-                <p>Oferecer suporte psicológico, canais de denúncia anônimos e grupos de apoio. Vítimas precisam saber que não estão sozinhas e que a culpa não é delas.</p>
-            </div>
-            
-            <div class="prevention-item">
-                <h3><span class="prevention-number">6</span> Intervenção nos Agressores</h3>
-                <p>Não basta punir; é necessário entender as causas do comportamento agressivo. Terapia, mediação de conflitos e programas de habilidades sociais.</p>
-            </div>
-            
-            <div class="prevention-item">
-                <h3><span class="prevention-number">7</span> Engajamento Familiar</h3>
-                <p>Envolver pais e responsáveis na prevenção. Famílias precisam monitorar o comportamento dos filhos e ensinar empatia desde cedo.</p>
-            </div>
-            
-            <div class="prevention-item">
-                <h3><span class="prevention-number">8</span> Cultura de Respeito</h3>
-                <p>Criar ambientes que valorizem a diversidade e inclusão. Celebrar diferenças, promover atividades colaborativas e reconhecer comportamentos positivos.</p>
-            </div>
-        </div>
 
-        <div class="emergency-box">
-            <h3>🚨 Você pode fazer a diferença hoje!</h3>
-            <p>Se você presenciar bullying, não seja omisso. Se você sofre bullying, peça ajuda. Se você pratica bullying, busque mudança.</p>
-            <div class="emergency-links">
-                <a href="tel:100">Disque 100 (Direitos Humanos)</a>
-                <a href="tel:188">CVV 188 (Apoio Emocional)</a>
+            <div class="emergency-box">
+                <h3>🚨 Você pode fazer a diferença hoje!</h3>
+                <p>Se você presenciar bullying, não seja omisso. Se você sofre bullying, peça ajuda. Se você pratica bullying, busque mudança.</p>
+                <div class="emergency-links">
+                    <a href="tel:100">Disque 100 (Direitos Humanos)</a>
+                    <a href="tel:188">CVV 188 (Apoio Emocional)</a>
+                </div>
             </div>
         </div>
     </section>
@@ -699,16 +743,5 @@
         </div>
     </footer>
 
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
 </html>
