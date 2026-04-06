@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#PareOBullying - Campanha de Conscientização</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --dark: #2C3E50;
+            --light: #F7F9FA;
+            --warning: #FFE66D;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Shapes */
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            width: 60px;
+            height: 60px;
+            background: white;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Definition Section */
+        .definition {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .definition::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 150px;
+            color: var(--primary);
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .definition-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--warning) 0%, var(--warning) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+            padding: 0 4px;
+            font-weight: 600;
+        }
+
+        /* Types Grid */
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .type-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-2);
+        }
+
+        .type-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .type-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .type-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .type-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            background: var(--gradient-1);
+            color: white;
+            padding: 5rem 2rem;
+            margin: 0 -2rem;
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Locations Section */
+        .locations {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .location-card {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .location-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .location-icon {
+            font-size: 3rem;
+            min-width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-3);
+            border-radius: 20px;
+        }
+
+        .location-content h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .location-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .location-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Prevention Section */
+        .prevention-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .prevention-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--gradient-2);
+            border-radius: 2px;
+        }
+
+        .prevention-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .prevention-item::before {
+            content: '';
+            position: absolute;
+            left: -3.4rem;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px var(--primary);
+        }
+
+        .prevention-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .prevention-number {
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* References Section */
+        .references {
+            background: #f0f0f0;
+            padding: 5rem 2rem;
+            margin: 0 -2rem;
+        }
+
+        .references-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .ref-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .ref-card h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .ref-card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .ref-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin: 0 -2rem -5rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .location-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .prevention-timeline {
+                padding-left: 2rem;
+            }
+            
+            .prevention-item::before {
+                left: -2.4rem;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">#PareOBullying</div>
+        <ul class="nav-links">
+            <li><a href="#definicao">O que é</a></li>
+            <li><a href="#onde">Onde Acontece</a></li>
+            <li><a href="#como">Como Acontece</a></li>
+            <li><a href="#prevenir">Prevenção</a></li>
+            <li><a href="#referencias">Referências</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="hero-content">
+            <h1>#PareOBullying</h1>
+            <p class="hero-subtitle">Juntos podemos criar um mundo mais respeitoso e acolhedor</p>
+            <a href="#definicao" class="cta-button">Saiba Mais</a>
+        </div>
+    </header>
+
+    <section id="definicao">
+        <h2 class="section-title">O que é Bullying?</h2>
+        <div class="definition scroll-reveal">
+            <p class="definition-text">
+                <span class="highlight">Bullying</span> é um comportamento agressivo e repetitivo que envolve um <span class="highlight">desequilíbrio de poder</span> real ou percebido. Diferente de uma simples briga ou conflito isolado, o bullying é caracterizado pela <span class="highlight">intenção deliberada de causar dano</span>, seja físico, verbal, social ou psicológico, e ocorre repetidamente ao longo do tempo.
+                <br><br>
+                É importante entender que bullying não é "brincadeira", não é "coisa de criança" e não é algo que a vítima deve "aprender a lidar sozinha". É uma forma de <span class="highlight">violência</span> que pode deixar sequelas emocionais profundas e duradouras.
+            </p>
+        </div>
+
+        <h3 style="text-align: center; margin: 3rem 0 2rem; font-size: 1.8rem; color: var(--dark);">Tipos de Bullying</h3>
+        <div class="types-grid">
+            <div class="type-card scroll-reveal">
+                <div class="type-icon">👊</div>
+                <h3>Físico</h3>
+                <p>Bater, empurrar, chutar, puxar cabelos, estragar pertences ou qualquer forma de agressão corporal. É o tipo mais visível e fácil de identificar.</p>
+            </div>
+            <div class="type-card scroll-reveal">
+                <div class="type-icon">💬</div>
+                <h3>Verbal</h3>
+                <p>Xingamentos, apelidos pejorativos, insultos, ameaças, humilhações públicas e comentários depreciativos sobre aparência, origem ou características pessoais.</p>
+            </div>
+            <div class="type-card scroll-reveal">
+                <div class="type-icon">😢</div>
+                <h3>Psicológico/Relacional</h3>
+                <p>Exclusão social, fofocas, manipulação, isolar a vítima do grupo, espalhar rumores mentirosos e destruir relacionamentos deliberadamente.</p>
+            </div>
+            <div class="type-card scroll-reveal">
+                <div class="type-icon">📱</div>
+                <h3>Cyberbullying</h3>
+                <p>Agressões através da internet e redes sociais: mensagens de ódio, exposição de fotos íntimas, criação de perfis falsos, ameaças online e disseminação de conteúdo humilhante.</p>
+            </div>
+            <div class="type-card scroll-reveal">
+                <div class="type-icon">👀</div>
+                <h3>Moral</h3>
+                <p>Perseguição, difamação, calúnia, injúria e exposição da imagem da vítima de forma negativa para prejudicar sua reputação.</p>
+            </div>
+            <div class="type-card scroll-reveal">
+                <div class="type-icon">🎨</div>
+                <h3>Material</h3>
+                <p>Dano ou roubo de pertences pessoais, materiais escolares, extorsão de dinheiro ou objetos de valor (bullying patrimonial).</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item scroll-reveal">
+                <span class="stat-number">246M</span>
+                <span class="stat-label">Crianças e adolescentes sofrem bullying anualmente no mundo</span>
+            </div>
+            <div class="stat-item scroll-reveal">
+                <span class="stat-number">30%</span>
+                <span class="stat-label">Dos jovens já sofreram ou praticaram bullying</span>
+            </div>
+            <div class="stat-item scroll-reveal">
+                <span class="stat-number">1 em 3</span>
+                <span class="stat-label">Estudantes brasileiros já sofreram bullying na escola</span>
+            </div>
+            <div class="stat-item scroll-reveal">
+                <span class="stat-number">37%</span>
+                <span class="stat-label">Dos casos acontecem dentro da sala de aula</span>
+            </div>
+        </div>
+    </div>
+
+    <section id="onde">
+        <h2 class="section-title">Onde Acontece o Bullying?</h2>
+        <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+            O bullying pode ocorrer em qualquer ambiente onde haja interação humana, mas alguns locais são mais vulneráveis devido à dinâmica de poder e supervisão.
+        </p>
+        
+        <div class="locations">
+            <div class="location-card scroll-reveal">
+                <div class="location-icon">🏫</div>
+                <div class="location-content">
+                    <h3>Escolas e Universidades</h3>
+                    <p>O local onde mais acontece bullying. Corredores, banheiros, pátios, refeitórios, salas de aula e até dentro do transporte escolar. A escola é o ambiente onde crianças e adolescentes passam a maior parte do tempo fora de casa, criando dinâmicas sociais complexas.</p>
+                    <span class="location-tag">MAIS COMUM</span>
+                </div>
+            </div>
+            
+            <div class="location-card scroll-reveal">
+                <div class="location-icon">💼</div>
+                <div class="location-content">
+                    <h3>Ambiente de Trabalho (Mobbing)</h3>
+                    <p>Bullying no trabalho envolve assédio moral, sabotagem de carreira, humilhações em reuniões, sobrecarga de trabalho deliberada e exclusão de atividades sociais corporativas. Pode vir de chefes, colegas ou subordinados.</p>
+                    <span class="location-tag">CRESCENTE</span>
+                </div>
+            </div>
+            
+            <div class="location-card scroll-reveal">
+                <div class="location-icon">🏠</div>
+                <div class="location-content">
+                    <h3>Vizinhança e Comunidade</h3>
+                    <p>Parques, praças, centros comerciais, clubes e espaços de lazer. O bullying de vizinhança pode envolver intimidação, destruição de propriedade e exclusão de atividades comunitárias.</p>
+                </div>
+            </div>
+            
+            <div class="location-card scroll-reveal">
+                <div class="location-icon">🌐</div>
+                <div class="location-content">
+                    <h3>Internet e Redes Sociais</h3>
+                    <p>O cyberbullying acontece 24 horas por dia, 7 dias por semana, através de WhatsApp, Instagram, TikTok, Facebook, e-mails e jogos online. Não tem limites geográficos e pode alcançar uma audiência massiva instantaneamente.</p>
+                    <span class="location-tag">ALTA INCIDÊNCIA</span>
+                </div>
+            </div>
+            
+            <div class="location-card scroll-reveal">
+                <div class="location-icon">⚽</div>
+                <div class="location-content">
+                    <h3>Esportes e Atividades Extracurriculares</h3>
+                    <p>Times esportivos, grupos de dança, teatro, música e outras atividades. O bullying pode ocorrer entre colegas de equipe, através de treinadores autoritários ou pais competitivos que pressionam outros atletas.</p>
+                </div>
+            </div>
+            
+            <div class="location-card scroll-reveal">
+                <div class="location-icon">🏥</div>
+                <div class="location-content">
+                    <h3>Instituições de Saúde e Abrigos</h3>
+                    <p>Hospitais, clínicas, asilos e abrigos. Pessoas em situação de vulnerabilidade física ou emocional são frequentemente alvos de bullying por cuidadores, outros pacientes ou visitantes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="como" style="background: white; margin: 0 -2rem; padding: 5rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Como e De Que Jeito Acontece?</h2>
+            
+            <div class="types-grid" style="margin-top: 3rem;">
+                <div class="type-card scroll-reveal" style="border-top: 5px solid #FF6B6B;">
+                    <h3 style="color: #FF6B6B;">🔄 Agressão Repetitiva</h3>
+                    <p>O bullying não é um evento isolado. Acontece <strong>repetidamente</strong> ao longo do tempo, criando um padrão de intimidação sistemática que desgasta a vítima psicologicamente.</p>
+                </div>
+                
+                <div class="type-card scroll-reveal" style="border-top: 5px solid #4ECDC4;">
+                    <h3 style="color: #4ECDC4;">⚖️ Desequilíbrio de Poder</h3>
+                    <p>O agressor tem alguma vantagem sobre a vítima: pode ser física (maior/t mais forte), social (mais popular), numérica (grupo vs. indivíduo) ou hierárquica (chefe vs. funcionário).</p>
+                </div>
+                
+                <div class="type-card scroll-reveal" style="border-top: 5px solid #FFE66D;">
+                    <h3 style="color: #d4b814;">🎯 Intenção de Causar Dano</h3>
+                    <p>Existe <strong>deliberadamente</strong> a vontade de machucar, humilhar ou intimidar. Não é acidental ou resultado de "brincadeira que saiu do controle".</p>
+                </div>
+                
+                <div class="type-card scroll-reveal" style="border-top: 5px solid #A8E6CF;">
+                    <h3 style="color: #2d7a5e;">👥 Testemunhas (Bystanders)</h3>
+                    <p>Frequentemente ocorre na presença de espectadores que não intervêm. Estes podem reforçar o comportamento do agressor através de risadas, gravações ou simples omissão.</p>
+                </div>
+                
+                <div class="type-card scroll-reveal" style="border-top: 5px solid #C7CEEA;">
+                    <h3 style="color: #6b7aa1;">🎭 Anonimato (Cyberbullying)</h3>
+                    <p>Na internet, agressores usam perfis falsos, contas anônimas ou grupos fechados para atacar sem identificação, aumentando a crueldade devido à desinibição online.</p>
+                </div>
+                
+                <div class="type-card scroll-reveal" style="border-top: 5px solid #FFB3BA;">
+                    <h3 style="color: #c45c5c;">📢 Viralização</h3>
+                    <p>Conteúdos humilhantes podem ser compartilhados massivamente, expondo a vítima a milhares de pessoas e perpetuando o trauma além do ambiente original.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prevenir">
+        <h2 class="section-title">Como Acabar ou Amenizar o Bullying?</h2>
+        <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem;">
+            A prevenção do bullying requer ação de toda a comunidade. Aqui estão estratégias eficazes baseadas em evidências:
+        </p>
+
+        <div class="prevention-timeline">
+            <div class="prevention-item scroll-reveal">
+                <h3><span class="prevention-number">1</span> Educação e Conscientização</h3>
+                <p>Programas educativos nas escolas e empresas sobre empatia, respeito à diversidade, inteligência emocional e consequências do bullying. Quanto mais as pessoas entendem o impacto real do bullying, menos provável é que o pratiquem ou tolerem.</p>
+            </div>
+            
+            <div class="prevention-item scroll-reveal">
+                <h3><span class="prevention-number">2</span> Políticas Claras e Consistentes</h3>
+                <p>Estabelecer regras explícitas contra bullying com consequências definidas. É crucial que instituições tenham protocolos claros de denúncia, investigação e intervenção, aplicados consistentemente a todos.</p>
+            </div>
+            
+            <div class="prevention-item scroll-reveal">
+                <h3><span class="prevention-number">3</span> Supervisão Adequada</h3>
+                <p>Aumentar a vigilância em locais de risco (corredores, banheiros, pátios, online). Muitos casos ocorrem em "pontos cegos" onde adultos não estão presentes ou atentos.</p>
+            </div>
+            
+            <div class="prevention-item scroll-reveal">
+                <h3><span class="prevention-number">4</span> Empoderamento das Testemunhas</h3>
+                <p>80% dos casos têm espectadores. Ensinar bystanders a intervir de forma segura (pedir ajuda a adultos, apoiar a vítima, não reforçar o agressor) é uma das estratégias mais eficazes.</p>
+            </div>
+            
+            <div class="prevention-item scroll-reveal">
+                <h3><span class="prevention-number">5</span> Apoio às Vítimas</h3>
+                <p>Oferecer suporte psicológico, canais de denúncia anônimos e grupos de apoio. Vítimas precisam saber que não estão sozinhas e que a culpa não é delas. A escuta ativa é fundamental.</p>
+            </div>
+            
+            <div class="prevention-item scroll-reveal">
+                <h3><span class="prevention-number">6</span> Intervenção nos Agressores</h3>
+                <p>Não basta punir; é necessário entender as causas do comportamento agressivo (muitas vezes o agressor também sofre). Terapia, mediação de conflitos e programas de habilidades sociais são essenciais.</p>
+            </div>
+            
+            <div class="prevention-item scroll-reveal">
+                <h3><span class="prevention-number">7</span> Engajamento Familiar</h3>
+                <p>Envolver pais e responsáveis na prevenção. Famílias precisam monitorar o comportamento dos filhos (online e offline), ensinar empatia desde cedo e buscar ajuda quando necessário.</p>
+            </div>
+            
+            <div class="prevention-item scroll-reveal">
+                <h3><span class="prevention-number">8</span> Cultura de Respeito</h3>
+                <p>Criar ambientes que valorizem a diversidade, inclusão e gentileza. Celebrar diferenças, promover atividades colaborativas e reconhecer comportamentos positivos ajuda a mudar a cultura organizacional.</p>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem; border-radius: 20px; margin-top: 4rem; text-align: center;">
+            <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">🚨 Você pode fazer a diferença hoje!</h3>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Se você presenciar bullying, não seja omisso. Se você sofre bullying, peça ajuda. Se você pratica bullying, busque mudança.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="tel:100" style="background: white; color: #667eea; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700;">Disque 100 (Direitos Humanos)</a>
+                <a href="tel:188" style="background: white; color: #667eea; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700;">CVV 188 (Apoio Emocional)</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="referencias" class="references">
+        <div class="references-content">
+            <h2 class="section-title" style="color: var(--dark);">Referências e Fontes</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                Todas as informações desta campanha são baseadas em dados científicos e instituições reconhecidas.
+            </p>
+            
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>🌐 UNICEF</h4>
+                    <p>United Nations Children's Fund - Dados globais sobre violência contra crianças e bullying escolar. Relatórios anuais sobre bem-estar infantil.</p>
+                    <a href="https://www.unicef.org" target="_blank">www.unicef.org</a>
+                </div>
+                
+                <div class="ref-card">
+                    <h4>📚 UNESCO</h4>
+                    <p>United Nations Educational, Scientific and Cultural Organization - Estudos sobre violência escolar e bullying global. Relatório "Behind the Numbers".</p>
+                    <a href="https://www.unesco.org" target="_blank">www.unesco.org</a>
+                </div>
+                
+                <div class="ref-card">
+                    <h4>🏥 OMS - Organização Mundial da Saúde</h4>
+                    <p>World Health Organization - Dados sobre saúde mental, violência juvenil e estudos epidemiológicos sobre bullying.</p>
+                    <a href="https://www.who.int" target="_blank">www.who.int</a>
+                </div>
+                
+                <div class="ref-card">
+                    <h4>📖 Wikipedia - Bullying</h4>
+                    <p>Artigo enciclopédico sobre bullying com definições, tipos, estatísticas e histórico. Referências acadêmicas verificáveis.</p>
+                    <a href="https://pt.wikipedia.org/wiki/Bullying" target="_blank">pt.wikipedia.org/wiki/Bullying</a>
+                </div>
+                
+                <div class="ref-card">
+                    <h4>🇧 Brasil - IBGE/INEP</h4>
+                    <p>Instituto Brasileiro de Geografia e Estatística e Instituto Nacional de Estudos e Pesquisas Educacionais - Pesquisas sobre ambiente escolar no Brasil.</p>
+                    <a href="https://www.gov.br/inep" target="_blank">www.gov.br/inep</a>
+                </div>
+                
+                <div class="ref-card">
+                    <h4>🎓 StopBullying.gov (EUA)</h4>
+                    <p>Portal do governo americano dedicado à prevenção do bullying. Recursos educativos, estatísticas e estratégias de intervenção.</p>
+                    <a href="https://www.stopbullying.gov" target="_blank">www.stopbullying.gov</a>
+                </div>
+                
+                <div class="ref-card">
+                    <h4>🧠 American Psychological Association</h4>
+                    <p>APA - Pesquisas científicas sobre impactos psicológicos do bullying, estratégias de prevenção e intervenção baseadas em evidências.</p>
+                    <a href="https://www.apa.org" target="_blank">www.apa.org</a>
+                </div>
+                
+                <div class="ref-card">
+                    <h4>📱 SaferNet Brasil</h4>
+                    <p>Organização brasileira focada em cyberbullying e segurança digital. Denúncias de crimes na internet e campanhas de conscientização.</p>
+                    <a href="https://www.safernet.org.br" target="_blank">www.safernet.org.br</a>
+                </div>
+                
+                <div class="ref-card">
+                    <h4>📊 National Center for Education Statistics (NCES)</h4>
+                    <p>Centro de Estatísticas Educacionais dos EUA - Dados sobre indicadores de crimes e segurança escolar, incluindo bullying.</p>
+                    <a href="https://nces.ed.gov" target="_blank">nces.ed.gov</a>
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 2rem; border-radius: 15px; margin-top: 3rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                <h4 style="color: var(--dark); margin-bottom: 1rem;">📅 Atualização dos Dados</h4>
+                <p style="color: #666;">As estatísticas e informações desta campanha foram compiladas a partir de dados disponíveis em 2024-2025. Recomendamos consultar as fontes originais para dados mais atualizados.</p>
+                <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Campanha criada em: Abril 2026</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">#PareOBullying</h3>
+            <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem;">
+                Cada pessoa merece respeito e dignidade. Junte-se a nós na luta contra o bullying.
+            </p>
+            <div class="social-links">
+                <a href="#">📘</a>
+                <a href="#">📸</a>
+                <a href="#">🐦</a>
+                <a href="#">💬</a>
+            </div>
+            <p style="opacity: 0.7; font-size: 0.9rem;">
+                © 2026 Campanha #PareOBullying. Todos os direitos reservados.<br>
+                Esta é uma campanha educativa de conscientização.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                const speed = 0.5 + (index * 0.2);
+                shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
